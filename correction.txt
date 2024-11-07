@@ -1,6 +1,6 @@
-Nom complet :
-Numéro de dossier (NI) :
-Lien vers le dépôt GitHub PRIVÉ de votre TP :
+Nom complet : Ibrahim Junior Traoré
+Numéro de dossier (NI) : 11 267 819
+Lien vers le dépôt GitHub PRIVÉ de votre TP : https://github.com/PotatoFireee/TP2.git
 Avez-vous invité les correcteurs comme collaborateurs à votre dépôt GitHub (Oui/Non) :
 Estimation du temps de réalisation :
 

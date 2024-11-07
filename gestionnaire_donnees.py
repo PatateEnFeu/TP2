@@ -51,6 +51,10 @@ def sauvegarder_utilisateurs(utilisateurs):
     Le fichier est entièrement écrasé chaque fois que cette fonction est appelée.
     """
     # TODO
+    with open('utilisateurs.txt','w') as save_line:
+        for cle in utilisateurs:
+            save_line.write(f"{cle}, {utilisateurs[cle]}\n")
+        
 
 
 def charger_proprietes():

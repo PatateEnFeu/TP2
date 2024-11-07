@@ -1,0 +1,7 @@
+from configuration import FICHIER_UTILISATEURS, FICHIER_PROPRIETES
+
+utilisateurs = {'chien':'wouaf wouaf', 'chatte': 'miaou', 'vache':'meuh'}
+
+with open('utilisateurs.txt','w') as save_line:
+        for cle in utilisateurs:
+            save_line.write(f"{cle}, {utilisateurs[cle]}\n")
