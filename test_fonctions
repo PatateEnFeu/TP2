@@ -1,7 +1,44 @@
 from configuration import FICHIER_UTILISATEURS, FICHIER_PROPRIETES
 
-utilisateurs = {'chien':'wouaf wouaf', 'chatte': 'miaou', 'vache':'meuh'}
+# Fonction sauvegarder_utilisateurs
 
-with open('utilisateurs.txt','w') as save_line:
-        for cle in utilisateurs:
-            save_line.write(f"{cle}, {utilisateurs[cle]}\n")
+# utilisateurs = {'chien':'wouaf wouaf', 'chatte': 'miaou', 'vache':'meuh', 'A': 'B'}
+
+# with open(FICHIER_UTILISATEURS,'w') as save_line:
+#     for cle in utilisateurs:
+#         save_line.write(f"{cle}, {utilisateurs[cle]}\n")
+
+
+
+
+
+# Fonction charger_proprietes
+
+# list_prop = []
+# with open(FICHIER_PROPRIETES,'r') as info_prop:
+#     info_prop.readline() # passer la 1ère ligne d'entête
+#     for ligne in info_prop:
+#         ligne = ligne.strip()
+#         if ligne: # si la ligne du fichier n'est pas vide
+#             elements = ligne.split(',')
+#             dict_prop = {
+#                 'prix': int(elements[0]),
+#                 'ville': elements[1],
+#                 'type': elements[2],
+#                 'chambres': int(elements[3]),
+#                 'salles_de_bains': int(elements[4])
+            
+#             }
+#             list_prop.append(dict_prop)
+
+#         else : # si la ligne du fichier est vide
+#             list_prop.append([])
+
+# print (list_prop)
+
+# à mettre dans fichier pour test
+# prix,ville,type,chambres,salles_de_bains
+# 5000000,Québec,Maison,4,2
+# 4554545,Montréal,Condo,7,6
+
+# 9888800,Toronto,Maison,7,9

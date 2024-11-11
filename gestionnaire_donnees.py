@@ -51,9 +51,9 @@ def sauvegarder_utilisateurs(utilisateurs):
     Le fichier est entièrement écrasé chaque fois que cette fonction est appelée.
     """
     # TODO
-    with open('utilisateurs.txt','w') as save_line:
+    with open(FICHIER_UTILISATEURS,'w') as save_line:
         for cle in utilisateurs:
-            save_line.write(f"{cle}, {utilisateurs[cle]}\n")
+            save_line.write(f"{cle}, {utilisateurs[cle]}\n]")
         
 
 
@@ -78,6 +78,26 @@ def charger_proprietes():
                Si le fichier est vide, une liste vide est retournée.
     """
     # TODO
+    list_prop = []
+    with open(FICHIER_PROPRIETES,'r') as info_prop:
+        info_prop.readline() # passer la 1ère ligne d'entête
+        for ligne in info_prop:
+            ligne = ligne.strip()
+            if ligne: # si la ligne du fichier n'est pas vide
+                elements = ligne.split(',')
+                dict_prop = {
+                    'prix': int(elements[0]),
+                    'ville': elements[1],
+                    'type': elements[2],
+                    'chambres': int(elements[3]),
+                    'salles_de_bains': int(elements[4])   
+                }
+                list_prop.append(dict_prop)
+
+            else : # si la ligne du fichier est vide
+                list_prop.append([])
+
+        return list_prop
 
 
 def sauvegarder_propriete(nouvelle_propriete):

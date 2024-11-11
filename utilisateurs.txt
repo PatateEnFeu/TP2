@@ -1,0 +1,4 @@
+chien, wouaf wouaf
+chatte, miaou
+vache, meuh
+A, B
