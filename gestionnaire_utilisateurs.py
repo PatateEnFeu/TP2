@@ -38,6 +38,14 @@ def recuperer_utilisateur_courant():
                      ou `None` si aucun utilisateur n'est connecté.
     """
     # TODO
+    with open (FICHIER_SESSION,'r') as connected:
+        for ligne in connected:
+            ligne = ligne.strip()
+            if ligne:
+                return str(ligne)
+            else:
+                return None
+
 
 
 def definir_utilisateur_courant(nom_utilisateur):
@@ -51,6 +59,9 @@ def definir_utilisateur_courant(nom_utilisateur):
         nom_utilisateur (str): Le nom de l'utilisateur à enregistrer comme utilisateur connecté.
     """
     # TODO
+    with open (FICHIER_SESSION,'w') as connecting:
+        connecting.write(nom_utilisateur)
+
 
 
 def vider_session():
@@ -59,6 +70,8 @@ def vider_session():
     Cette fonction vide le contenu du fichier de session, marquant ainsi l'utilisateur comme déconnecté.
     """
     # TODO
+    with open (FICHIER_SESSION,'w') as fichier :
+        pass
 
 
 def creer_compte():
@@ -75,7 +88,19 @@ def creer_compte():
     Affiche un message de confirmation si le compte est créé avec succès, ou un message d'erreur si le nom d'utilisateur est déjà pris.
     """
     # TODO
+    users = charger_utilisateurs()
+    username = str(input("Nom d'utilisateur: "))
 
+    if username in users:
+        print("Nom d'utilisateur déjà pris")
+        return
+        
+    mdp = hacher_mot_de_passe(input("Mot de passe: "))
+    users[username] = mdp
+    sauvegarder_utilisateurs(users)
+    print('Compte crée avec succès')
+           
+            
 
 def se_connecter():
     """Connecte un utilisateur existant en vérifiant ses informations d'identification.

@@ -1,4 +1,4 @@
-from configuration import FICHIER_UTILISATEURS, FICHIER_PROPRIETES
+from configuration import FICHIER_UTILISATEURS, FICHIER_PROPRIETES, FICHIER_SESSION
 
 # Fonction sauvegarder_utilisateurs
 
@@ -42,3 +42,17 @@ from configuration import FICHIER_UTILISATEURS, FICHIER_PROPRIETES
 # 4554545,Montréal,Condo,7,6
 
 # 9888800,Toronto,Maison,7,9
+
+
+
+
+# Fonction recuperer_utilisateurs_courant
+
+
+# with open (FICHIER_SESSION,'r') as connected:
+#     for ligne in connected:
+#         ligne = ligne.strip()
+#         if ligne:
+#             print(str(ligne))
+#         else:
+#             print ('rien à voir')
