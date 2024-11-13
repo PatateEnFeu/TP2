@@ -70,8 +70,9 @@ def vider_session():
     Cette fonction vide le contenu du fichier de session, marquant ainsi l'utilisateur comme déconnecté.
     """
     # TODO
-    with open (FICHIER_SESSION,'w') as fichier :
+    with open(FICHIER_SESSION, 'w') as fichier:  # Vérifier pourquoi je n'arrive pas à accéder à fichier
         pass
+    print("Vous êtes déconnecté")
 
 
 def creer_compte():
@@ -119,6 +120,19 @@ def se_connecter():
     Affiche un message de réussite si la connexion est réussie, ou un message d'erreur en cas d'échec.
     """
     # TODO
+    users = charger_utilisateurs()
+    username = input("Nom d'utilisateur: ")
+    mdp = input ("Mot de passe : ")
+
+    if username in users :
+        if secrets.compare_digest(users[username],hacher_mot_de_passe(mdp)):
+            with open (FICHIER_SESSION,"w") as connecting:
+                connecting.write(username)
+            print("Vous êtes connecté")
+        else :
+            print("Votre mot de passe est incorrect")
+    else :
+        print("Votre nom d'utilisateur est incorrect")    
 
 
 def se_deconnecter():

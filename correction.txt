@@ -25,7 +25,7 @@ Fonctionnalités
 /5 : gestionnaire_utilisateurs.creer_compte  ✅
     Commentaires :
 
-/5 : gestionnaire_utilisateurs.se_connecter
+/5 : gestionnaire_utilisateurs.se_connecter ✅
     Commentaires :
 
 /7 : gestionnaire_proprietes.ajouter_propriete

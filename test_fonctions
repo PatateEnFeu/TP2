@@ -56,3 +56,7 @@ from configuration import FICHIER_UTILISATEURS, FICHIER_PROPRIETES, FICHIER_SESS
 #             print(str(ligne))
 #         else:
 #             print ('rien à voir')
+
+
+
+
