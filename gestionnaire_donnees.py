@@ -51,7 +51,7 @@ def sauvegarder_utilisateurs(utilisateurs):
     Le fichier est entièrement écrasé chaque fois que cette fonction est appelée.
     """
     # TODO
-    with open(FICHIER_UTILISATEURS,'w') as save_line:
+    with open(FICHIER_UTILISATEURS,'w',encoding='utf-8') as save_line:
         for cle in utilisateurs:
             save_line.write(f"{cle}, {utilisateurs[cle]}\n]")
         
@@ -79,7 +79,7 @@ def charger_proprietes():
     """
     # TODO
     list_prop = []
-    with open(FICHIER_PROPRIETES,'r') as info_prop:
+    with open(FICHIER_PROPRIETES,'r',encoding='utf-8') as info_prop:
         info_prop.readline() # passer la 1ère ligne d'entête
         for ligne in info_prop:
             ligne = ligne.strip()
@@ -93,9 +93,7 @@ def charger_proprietes():
                     'salles_de_bains': int(elements[4])   
                 }
                 list_prop.append(dict_prop)
-
-            else : # si la ligne du fichier est vide
-                list_prop.append([])
+            # Aucun else car je veux éviter d'avoir ligne vide dans mon tableau
 
         return list_prop
 

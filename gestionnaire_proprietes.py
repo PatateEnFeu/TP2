@@ -41,6 +41,27 @@ def lister_proprietes():
     Affiche un message approprié si aucune propriété n'est disponible.
     """
     # TODO
+    list_of_list = []
+    sous_liste = []
+    list_prop = charger_proprietes()
+
+    for valeur in list_prop:
+        sous_liste = [
+            formater_argent(valeur["prix"]),
+            valeur["ville"],
+            valeur["type"],
+            valeur["chambres"],
+            valeur["salles_de_bains"]
+        ]
+
+        list_of_list.append(sous_liste)
+
+    if list_prop :
+        afficher_tableau(list_of_list,["Prix","Ville","Type de propriété","Chambres","Salles de bains"])
+
+    else :
+        print("Aucune propriété disponible")
+
 
 
 def filtrer_proprietes():
@@ -85,6 +106,30 @@ def ajouter_propriete():
     Affiche un message de confirmation une fois la propriété ajoutée, ou un message d'erreur si l'utilisateur n'est pas connecté.
     """
     # TODO
+    connected = utilisateur_est_connecte()
+    info_prop = {}
+    if connected:
+        prix = int(input("Entrez le prix: "))
+        demander_nombre_positif(prix)
+        ville = input("Entrez la ville: ")
+        Type_prop = input("Entrez le type de propriété (maison, condo, etc..): ")
+        nbr_chamb = int(input("Entrez le nombre de chambres: "))
+        demander_nombre_positif(nbr_chamb)
+        nbr_sdb = int(input("Entrez un nombre de salles de bains: "))
+        demander_nombre_positif(nbr_sdb)
+   
+        info_prop = {
+            "prix": prix,
+            "ville": ville,
+            "type" : Type_prop,
+            "chambres": nbr_chamb,
+            "salles_de_bains": nbr_sdb
+        }
+
+        sauvegarder_propriete(info_prop)
+
+    else:
+        print("L'utilisateur n'est pas connecté, vous ne pouvez pas ajouter de propriété")
 
 
 def demander_plage_de_prix(optionnel=False):

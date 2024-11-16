@@ -31,7 +31,7 @@ Fonctionnalités
 /7 : gestionnaire_proprietes.ajouter_propriete
     Commentaires :
 
-/5 : gestionnaire_proprietes.lister_proprietes
+/5 : gestionnaire_proprietes.lister_proprietes ✅
     Commentaires :
 
 /12 : gestionnaire_proprietes.filtrer_proprietes

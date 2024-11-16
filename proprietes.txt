@@ -1,0 +1,5 @@
+prix,ville,type,chambres,salles_de_bains
+5000000,Québec,Maison,4,2
+4554545,Montréal,Condo,7,6
+
+9888800,Toronto,Maison,7,9

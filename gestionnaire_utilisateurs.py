@@ -38,7 +38,7 @@ def recuperer_utilisateur_courant():
                      ou `None` si aucun utilisateur n'est connecté.
     """
     # TODO
-    with open (FICHIER_SESSION,'r') as connected:
+    with open (FICHIER_SESSION,'r',encoding='utf-8') as connected:
         for ligne in connected:
             ligne = ligne.strip()
             if ligne:
@@ -59,7 +59,7 @@ def definir_utilisateur_courant(nom_utilisateur):
         nom_utilisateur (str): Le nom de l'utilisateur à enregistrer comme utilisateur connecté.
     """
     # TODO
-    with open (FICHIER_SESSION,'w') as connecting:
+    with open (FICHIER_SESSION,'w',encoding='utf-8') as connecting:
         connecting.write(nom_utilisateur)
 
 
@@ -126,7 +126,7 @@ def se_connecter():
 
     if username in users :
         if secrets.compare_digest(users[username],hacher_mot_de_passe(mdp)):
-            with open (FICHIER_SESSION,"w") as connecting:
+            with open (FICHIER_SESSION,"w",encoding='utf-8') as connecting:
                 connecting.write(username)
             print("Vous êtes connecté")
         else :
