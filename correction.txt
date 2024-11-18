@@ -2,7 +2,7 @@ Nom complet : Ibrahim Junior Traoré
 Numéro de dossier (NI) : 111 267 819
 Lien vers le dépôt GitHub PRIVÉ de votre TP : https://github.com/PotatoFireee/TP2.git
 Avez-vous invité les correcteurs comme collaborateurs à votre dépôt GitHub (Oui/Non) : Oui
-Estimation du temps de réalisation :
+Estimation du temps de réalisation :4 jours
 
 
 Fonctionnalités
