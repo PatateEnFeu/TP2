@@ -87,8 +87,173 @@ def filtrer_proprietes():
       - Si aucune propriété ne correspond, un message indique qu'aucune propriété n'est disponible.
     """
     # TODO
+    continuer = True 
+    list_prop = charger_proprietes()
+    list_of_list = []
+    sous_liste = []
+    list_of_list_spec = []
 
 
+    for valeur in list_prop:
+        sous_liste = [
+            valeur["prix"],
+            valeur["ville"],
+            valeur["type"],
+            valeur["chambres"],
+            valeur["salles_de_bains"]
+        ]
+
+        list_of_list.append(sous_liste)
+
+    while continuer:
+        print("1. Filtrer par prix")
+        print("2. Filtrer par ville")
+        print("3. Filtrer par type de propriété")
+        print("4. Filtrer par nombre de chambres")
+        print("5. Filtrer par salles de bains")
+        print("6. Filtrer par une combinaison des options")
+
+        
+        try:
+            choix = int(input('Choisissez une option de filtrage: '))
+
+            if 1 <= choix <= 6:
+                
+                if choix == 1 :
+                    list_of_list_spec = []
+
+                    prix = demander_plage_de_prix()
+
+                    if prix[0] == None and prix[1] == None : # Cas aucun prix défini
+                        list_of_list_spec = list_of_list.copy()
+
+                    elif prix[0] == None and prix[1] >= 0 : # Cas du prix maximum seulement
+                        for sous_liste_spec in list_of_list :
+                            if sous_liste_spec[0] <= prix[1] :
+                                list_of_list_spec.append(sous_liste_spec)
+
+                    elif prix[0] >= 0 and prix[1] == None : # Cas du prix minimum seulement
+                        for sous_liste_spec in list_of_list :
+                            if sous_liste_spec[0] >= prix[0] :
+                                list_of_list_spec.append(sous_liste_spec)
+
+                
+                elif choix == 2 :
+
+                    ville = demander_ville()
+                    for sous_liste_spec in list_of_list :
+                        if sous_liste_spec[1] == ville :
+                            list_of_list_spec.append(sous_liste_spec)
+
+
+                elif choix == 3 :
+
+                    prop = demander_type_de_propriete()
+                    for sous_liste_spec in list_of_list :
+                        if sous_liste_spec[2] == prop :
+                            list_of_list_spec.append(sous_liste_spec)
+                
+                
+                elif choix == 4 :
+                    continuer_chamb = True
+                    while continuer_chamb :
+                        try:
+                            nbr_chambres = int(input("Nombres de chambres: "))
+                            for sous_liste_spec in list_of_list :
+                                if sous_liste_spec[3] == nbr_chambres:
+                                    list_of_list_spec.append(sous_liste_spec)
+                            
+                            if not list_of_list_spec:
+                                print("Il n'y a aucune propriété avec ce nombre de chambres")
+
+                            continuer_chamb = False
+
+                        except ValueError :
+                            print("Entrez un nombre valide")
+                        
+
+
+                elif choix == 5 :
+
+                    continuer_sdb = True
+                    while continuer_sdb:
+                        try:
+                            nbr_sdb = int(input("Nombres de salles de bains: "))
+                            for sous_liste_spec in list_of_list :
+                                if sous_liste_spec[4] == nbr_sdb:
+                                    list_of_list_spec.append(sous_liste_spec)
+                            if not list_of_list_spec:
+                                print("Il n'y a aucune propriété avec ce nombre de salles de bains ")
+
+                            continuer_sdb = False
+
+                        except ValueError:
+                            print("Entrez un nombre valide")
+
+   
+                
+                elif choix == 6 :
+
+                    prix = demander_plage_de_prix()
+                    if prix[0] == None and prix[1] == None : # Cas aucun prix défini
+                        list_of_list_spec = list_of_list.copy()
+
+                    elif prix[0] == None and prix[1] >= 0 : # Cas du prix maximum seulement
+                        for sous_liste_spec in list_of_list :
+                            if sous_liste_spec[0] <= prix[1] :
+                                list_of_list_spec.append(sous_liste_spec)
+
+                    elif prix[0] >= 0 and prix[1] == None : # Cas du prix minimum seulement
+                        for sous_liste_spec in list_of_list :
+                            if sous_liste_spec[0] >= prix[0] :
+                                list_of_list_spec.append(sous_liste_spec)
+
+
+
+                    ville = input("Choisissez une ville parmi les suivantes: Québec, Montréal, Toronto, Vancouver, Ottawa:")
+                    for sous_liste_spec in list_of_list :
+                        if sous_liste_spec[1] == ville :
+                            list_of_list_spec.append(sous_liste_spec)
+                    
+
+                    prop = input("Choisissez un type de propriété parmi les suivants: Maison, Appartement, Condo, Loft:")
+                    for sous_liste_spec in list_of_list :
+                        if sous_liste_spec[2] == prop :
+                            list_of_list_spec.append(sous_liste_spec)
+
+                    
+                    nbr_chambres = input("Nombres de chambres: ")
+                    for sous_liste_spec in list_of_list :
+                        if sous_liste_spec[3] == nbr_chambres:
+                            list_of_list_spec.append(sous_liste_spec)
+
+
+                    nbr_sdb = input("Nombres de salles de bains: ")
+                    for sous_liste_spec in list_of_list :
+                        if sous_liste_spec[4] == nbr_sdb:
+                            list_of_list_spec.append(sous_liste_spec)
+
+
+                continuer = False
+
+            else :
+                print("Choix invalide. Entrez une option parmi celles proposées")
+
+        except ValueError :
+            print("Entrez une nombre entre 1 et 6")
+
+    for valeur in list_of_list_spec:
+        valeur[0] = formater_argent(valeur[0])
+        
+    afficher_tableau(list_of_list_spec,["Prix","Ville","Type de propriété","Chambres","Salles de bains"])
+        
+
+    
+
+    
+
+VILLES = ["Québec", "Montréal", "Toronto", "Vancouver", "Ottawa"]
+TYPES_DE_PROPRIETE = ["Maison", "Appartement", "Condo","Loft"]
 def ajouter_propriete():
     """Ajoute une nouvelle propriété à la liste des propriétés, si l'utilisateur est connecté.
 
@@ -109,14 +274,11 @@ def ajouter_propriete():
     connected = utilisateur_est_connecte()
     info_prop = {}
     if connected:
-        prix = int(input("Entrez le prix: "))
-        demander_nombre_positif(prix)
-        ville = input("Entrez la ville: ")
-        Type_prop = input("Entrez le type de propriété (maison, condo, etc..): ")
-        nbr_chamb = int(input("Entrez le nombre de chambres: "))
-        demander_nombre_positif(nbr_chamb)
-        nbr_sdb = int(input("Entrez un nombre de salles de bains: "))
-        demander_nombre_positif(nbr_sdb)
+        prix = demander_nombre_positif("Entrez le prix")
+        ville = demander_ville()
+        Type_prop = demander_type_de_propriete()
+        nbr_chamb = demander_nombre_positif("Entrez le nombre de chambres")
+        nbr_sdb = demander_nombre_positif("Entrez un nombre de salles de bains")
    
         info_prop = {
             "prix": prix,
@@ -125,11 +287,12 @@ def ajouter_propriete():
             "chambres": nbr_chamb,
             "salles_de_bains": nbr_sdb
         }
-
         sauvegarder_propriete(info_prop)
 
     else:
         print("L'utilisateur n'est pas connecté, vous ne pouvez pas ajouter de propriété")
+    
+
 
 
 def demander_plage_de_prix(optionnel=False):

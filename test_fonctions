@@ -84,28 +84,89 @@ from utilitaires import afficher_tableau, formater_argent
     # print("Aucune propriété disponible")
 
 
+
+
+
 # Fonction ajouter_propriété
 
-    # info_prop = {}
-    # if true:
-    #     prix = int(input("Entrez le prix: "))
-    #     demander_nombre_positif(prix)
-    #     ville = input("Entrez la ville: ")
-    #     Type_prop = input("Entrez le type de propriété (maison, condo, etc..): ")
-    #     nbr_chamb = int(input("Entrez le nombre de chambres: "))
-    #     demander_nombre_positif(nbr_chamb)
-    #     nbr_sdb = int(input("Entrez un nombre de salles de bains: "))
-    #     demander_nombre_positif(nbr_sdb)
-   
-    #     info_prop = {
-    #         "prix": prix,
-    #         "ville": ville,
-    #         "type" : Type_prop,
-    #         "chambres": nbr_chamb,
-    #         "salles_de_bains": nbr_sdb
-    #     }
 
-    #     sauvegarder_propriete(info_prop)
+def demander_nombre_positif(prompt, optionnel=False):
+  while True:
+    nombre = input(f"{prompt}: ")
+    if optionnel and not nombre:
+        return None
+    try:
+        nombre = int(nombre)
+        if nombre > 0:
+            return nombre
+        else:
+            print("Veuillez saisir un nombre positif.")
+    except ValueError:
+        print("Valeur invalide. Veuillez saisir un nombre.")
 
-    # else:
-    #     print("L'utilisateur n'est pas connecté, vous ne pouvez pas ajouter de propriété")
+
+
+def demander_ville(optionnel=False):
+  print(f"Choisissez une ville parmi les suivantes: {', '.join(VILLES)}")
+  while True:
+    ville = input("Ville: ").capitalize()
+    if optionnel and not ville:
+        return None
+    if ville in VILLES:
+        return ville
+    print(f"Ville invalide. Choisissez parmi: {', '.join(VILLES)}")
+
+
+
+def demander_type_de_propriete(optionnel=False):
+    """Demande à l'utilisateur de choisir un type de propriété parmi les choix définis.
+
+    Args:
+        optionnel (bool): Indique si la saisie est facultative.
+
+    Returns:
+        str: Le type de propriété choisi.
+    """
+    print(
+        f"Choisissez un type de propriété parmi les suivants: {', '.join(TYPES_DE_PROPRIETE)}"
+    )
+    while True:
+        type_de_propriete = input("Type de propriété: ").capitalize()
+        if optionnel and not type_de_propriete:
+            return None
+        if type_de_propriete in TYPES_DE_PROPRIETE:
+            return type_de_propriete
+        print(
+            f"Type de propriété invalide. Choisissez parmi: {', '.join(TYPES_DE_PROPRIETE)}"
+        )
+
+
+
+from gestionnaire_proprietes import demander_ville, demander_nombre_positif, demander_type_de_propriete
+# def ajouter_propriete():
+info_prop = {}
+if True:
+  prix = demander_nombre_positif("Entrez le prix")
+  ville = demander_ville()
+  Type_prop = demander_type_de_propriete()
+  nbr_chamb = demander_nombre_positif("Entrez le nombre de chambres")
+  nbr_sdb = demander_nombre_positif("Entrez un nombre de salles de bains")
+
+  info_prop = {
+      "prix": prix,
+      "ville": ville,
+      "type" : Type_prop,
+      "chambres": nbr_chamb,
+      "salles_de_bains": nbr_sdb
+  }
+
+  sauvegarder_propriete(info_prop)
+
+
+
+
+
+
+
+
+

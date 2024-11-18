@@ -121,18 +121,21 @@ def se_connecter():
     """
     # TODO
     users = charger_utilisateurs()
-    username = input("Nom d'utilisateur: ")
-    mdp = input ("Mot de passe : ")
+    continuer = True
+    while continuer :
+        username = input("Nom d'utilisateur: ")
+        mdp = input ("Mot de passe : ")
 
-    if username in users :
-        if secrets.compare_digest(users[username],hacher_mot_de_passe(mdp)):
-            with open (FICHIER_SESSION,"w",encoding='utf-8') as connecting:
-                connecting.write(username)
-            print("Vous êtes connecté")
+        if username in users :
+            if secrets.compare_digest(users[username],hacher_mot_de_passe(mdp)):
+                with open (FICHIER_SESSION,"w") as connecting:
+                    connecting.write(username)
+                print("Vous êtes connecté")
+                continuer = False
+            else :
+                print("Votre mot de passe est incorrect")
         else :
-            print("Votre mot de passe est incorrect")
-    else :
-        print("Votre nom d'utilisateur est incorrect")    
+            print("Votre nom d'utilisateur est incorrect")   
 
 
 def se_deconnecter():

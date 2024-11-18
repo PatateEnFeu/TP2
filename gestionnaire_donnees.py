@@ -51,9 +51,14 @@ def sauvegarder_utilisateurs(utilisateurs):
     Le fichier est entièrement écrasé chaque fois que cette fonction est appelée.
     """
     # TODO
-    with open(FICHIER_UTILISATEURS,'w',encoding='utf-8') as save_line:
-        for cle in utilisateurs:
-            save_line.write(f"{cle}, {utilisateurs[cle]}\n]")
+    
+    with open(FICHIER_UTILISATEURS, 'w') as file:
+        file.write("utilisateur,hash\n")
+        
+        for utilisateur, hash_mdp in utilisateurs.items():
+            file.write(f"{utilisateur},{hash_mdp}\n")
+
+        
         
 
 
@@ -79,7 +84,7 @@ def charger_proprietes():
     """
     # TODO
     list_prop = []
-    with open(FICHIER_PROPRIETES,'r',encoding='utf-8') as info_prop:
+    with open(FICHIER_PROPRIETES,'r') as info_prop:
         info_prop.readline() # passer la 1ère ligne d'entête
         for ligne in info_prop:
             ligne = ligne.strip()

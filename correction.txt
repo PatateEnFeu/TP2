@@ -7,31 +7,31 @@ Estimation du temps de réalisation :
 
 Fonctionnalités
 ---------------
-/2 : gestionnaire_donnees.sauvegarder_utilisateurs ✅
+/2 : gestionnaire_donnees.sauvegarder_utilisateurs 
     Commentaires :
 
-/4 : gestionnaire_donnees.charger_proprietes ✅
+/4 : gestionnaire_donnees.charger_proprietes 
     Commentaires :
 
-/3 : gestionnaire_utilisateurs.recuperer_utilisateur_courant ✅
+/3 : gestionnaire_utilisateurs.recuperer_utilisateur_courant 
     Commentaires :
 
-/1 : gestionnaire_utilisateurs.definir_utilisateur_courant ✅
+/1 : gestionnaire_utilisateurs.definir_utilisateur_courant 
     Commentaires :
 
-/1 : gestionnaire_utilisateurs.vider_session ✅
+/1 : gestionnaire_utilisateurs.vider_session 
     Commentaires :
 
-/5 : gestionnaire_utilisateurs.creer_compte  ✅
+/5 : gestionnaire_utilisateurs.creer_compte  
     Commentaires :
 
-/5 : gestionnaire_utilisateurs.se_connecter ✅
+/5 : gestionnaire_utilisateurs.se_connecter 
     Commentaires :
 
-/7 : gestionnaire_proprietes.ajouter_propriete
+/7 : gestionnaire_proprietes.ajouter_propriete 
     Commentaires :
 
-/5 : gestionnaire_proprietes.lister_proprietes ✅
+/5 : gestionnaire_proprietes.lister_proprietes 
     Commentaires :
 
 /12 : gestionnaire_proprietes.filtrer_proprietes
